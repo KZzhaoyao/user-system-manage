@@ -90,6 +90,9 @@ class UserController extends UserBaseController
 
         $user = $this->getUserService()->getUser($id);
         $path = $user['img'.$type];
+        if (empty($path)) {
+            $path = 'assets/avatar.png';
+        }
 
         return $this->render('AppBundle:User:upload/upload-images.html.twig', array(
             'imagePath' => $path,
