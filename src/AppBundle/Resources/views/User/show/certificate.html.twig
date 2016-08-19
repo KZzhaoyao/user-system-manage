@@ -1,36 +1,51 @@
 {% extends 'AppBundle::modal-base.html.twig' %}
 
 {% block title %}
-<div class="page-header">档案照片（{% if user.trueName %}{{user.trueName}}{% else %}
-  {{user.number}}{% endif %}
-）</div>
-{% if app.user.isAdmin() %}
-  <ul class="nav nav-tabs">
+档案照片（{% if user.trueName %}{{user.trueName}}{% else %}
+  {{user.number}}{% endif %})
+{% endblock %}
+
+{% block body %}
+  {% if app.user.isAdmin() %}
+  <ul class="nav nav-tabs" style="margin-bottom:20px;">
     <li role="button" {% if type == 'idcard' %} class="active"{% endif %}><a class="show-idcard-img js-certificate-btn" data-url="{{ path('admin_user_certificate',{id:user.id,type:'idcard'}) }}">身份证图片</a></li>
     <li role="button" {% if type == 'education' %} class="active"{% endif %}><a class="show-education-img js-certificate-btn" data-url="{{ path('admin_user_certificate',{id:user.id,type:'education'}) }}">学历证书图片</a></li>
     <li role="button" {% if type == 'rank' %} class="active"{% endif %}><a class="show-rank-img js-certificate-btn" data-url="{{ path('admin_user_certificate',{id:user.id,type:'rank'}) }}">职称证书图片</a></li>
   </ul>
-{% endif %}
-{% endblock %}
-
-{% block body %}
-  {% if type == 'idcard' %}
-    <img src="{{ asset(user.imgFrontIDcard) }}" class="certificate-img">
-  {% elseif type == 'education' %}
-    <img src="{{ asset(user.imgEducation) }}" class="certificate-img">
-  {% else %}
-    <img src="{{ asset(user.imgRank) }}" class="certificate-img">
   {% endif %}
+
+  {% if type == 'idcard' %}
+    {% if user.imgFrontIDcard == '' %}
+      <img src="{{ asset('assets/avatar.png')}}" class="certificate-img">
+    {% else %}
+      <img src="{{ asset(user.imgFrontIDcard) }}" class="certificate-img">
+    {% endif %}
+  {% endif %}
+  {% if type == 'education' %}
+    {% if user.imgEducation == '' %}
+      <img src="{{ asset('assets/avatar.png')}}" class="certificate-img">
+    {% else %}
+      <img src="{{ asset(user.imgEducation) }}" class="certificate-img">
+    {% endif %}
+  {% endif %}
+  {% if type == 'rank' %}
+    {% if user.imgRank == '' %}
+      <img src="{{ asset('assets/avatar.png')}}" class="certificate-img">
+    {% else %}
+      <img src="{{ asset(user.imgRank) }}" class="certificate-img">
+    {% endif %}
+  {% endif %}
+ 
   
   
 {% endblock %}
 
 {% block footer %}
-  {% if type == 'idcard' %}
+  {% if type == 'idcard' and user.imgFrontIDcard != '' %}
     <a href="{{ path('admin_file_download',{id:user.id,fileName:'imgFrontIDcard'}) }}" class="btn btn-success">下载</a>
-  {% elseif type == 'education' %}
+  {% elseif type == 'education' and user.imgEducation != '' %}
     <a href="{{ path('admin_file_download',{id:user.id,fileName:'imgEducation'}) }}" class="btn btn-success">下载</a>
-  {% else %}
+  {% elseif type == 'rank' and user.imgRank != '' %}
     <a href="{{ path('admin_file_download',{id:user.id,fileName:'imgRank'}) }}" class="btn btn-success">下载</a>
   {% endif %}
 
