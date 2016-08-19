@@ -1,0 +1,46 @@
+body {
+  background-color: #F0F5F9;
+}
+
+.header {
+  background-color: #00a65a;
+  width: 100%;
+  height: 80px;
+}
+
+.header-content {
+  width: 1100px;
+  margin:0 auto;
+  overflow: hidden;
+}
+
+.content-left {
+  float: left;
+  font-size: 20px;
+  line-height: 80px;
+  color: white;
+}
+
+.content-right {
+  float: right;
+  line-height: 80px;
+  font-size: 16px;
+}
+
+.container {
+  margin-left: 0px;
+  margin-top: 100px;
+}
+
+.login {
+  height: 350px;
+  width: 560px;
+  background-color: white;
+  padding-left: 80px;
+  padding-top: 30px;
+  box-shadow: 3px 3px 3px #888888;
+}
+
+.login .form-group input {
+  width: 400px;
+}

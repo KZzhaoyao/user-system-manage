@@ -1,0 +1,25 @@
+{% for eduExperience in eduExperiences%}
+  <table class="table table-bordered">
+    <tr>
+      <td class="col-sm-3">开始时间：</td>
+      <td>{{eduExperience.startTime|date('Y-m-d')}}</td>
+    </tr>
+    <tr>
+      <td>结束时间：</td>
+      <td>{{eduExperience.endTime|date('Y-m-d')}}</td>
+    </tr>
+    <tr>
+      <td>院校名称：</td>
+      <td>{{eduExperience.schoolName}}</td>
+    </tr>
+    <tr>
+      <td>所学专业：</td>
+      <td>{{eduExperience.profession}}</td>
+    </tr>
+    <tr>
+      <td>担任职务：</td>
+      <td>{{eduExperience.position}}</td>
+    </tr>
+  </table>
+  <hr>
+{% endfor %}

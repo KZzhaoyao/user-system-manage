@@ -1,0 +1,36 @@
+<div class="work-modal hidden">
+  <div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="startTime">开始时间:</label>
+      <div class="col-sm-2 controls">
+        <input class="workStartTime form-control time" type="text" name="work[1][startTime]" placeholder="日期格式：年-月-日" value="">
+      </div>
+      <label class="col-sm-2 control-label" for="endTime">结束时间:</label>
+      <div class="col-sm-3 controls">
+        <input class="workEndTime form-control time" type="text" name="work[1][endTime]" placeholder="日期格式：年-月-日" value="">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="company">工作单位:</label>
+      <div class="col-sm-2 controls">
+        <input class="workUnit form-control" type="text" name="work[1][company]" value="">
+      </div>
+      <label class="col-sm-2 control-label" for="position">岗位职务:</label>
+      <div class="col-sm-3 controls">
+        <input class="workPosition form-control" type="text" name="work[1][position]" value="">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="leaveReason">离职原因:</label>
+      <div class="col-sm-2 controls">
+        <input class="leaveReason form-control" type="text" name="work[1][leaveReason]" value="">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-2 col-sm-offset-8">
+        <button type="button" id="delete-work-info" class="btn btn-sm btn-danger delete-work-info hidden">删除</button>
+        <button type="button" class="btn btn-sm btn-success add-work-info">新增</button>
+      </div>
+    </div>
+  </div>
+</div>

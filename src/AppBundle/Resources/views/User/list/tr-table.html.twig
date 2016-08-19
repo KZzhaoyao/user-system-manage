@@ -1,0 +1,60 @@
+{{ script(['links/user/js/change-role.js']) }}
+<tr id="js-status-{{ user.id }}">
+  <td>{{ user.number }}</td>
+  <td>{{ user.name }}</td>
+  <td>{{ user.trueName }}</td>
+  <td>{{ user.bornTime|date('Y-m-d') }}</td>
+  <td>{{ user.joinTime|date('Y-m-d') }}</td>
+  <td>
+    {% if user.gender == 'male' %}男{% else %}女{% endif %}
+  </td>
+  {% if app.user.isLeader() or app.user.isAdmin() %}
+  <td>{{ user.professionTitle }}</td>
+  <td>{{ user.rank }}</td>
+  {% endif %}
+  <td>{{ dict_text('education', user.education) }}</td>
+  <td>{{ user.phone }}</td>
+  {% if user.status == 'off' %}
+    <td>{{ user.quitTime|date('Y-m-d') }}</td>
+  {% endif %}
+  <td style="min-width:100px;">
+    <div class="btn-group">
+      <a class="btn btn-default btn-sm show-inuser" data-url="{{ path('user_show',{id:user.id}) }}">查看</a>
+      {% if app.user.isAdmin() %}
+      <a href="#" type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
+        <span class="caret"></span>
+      </a>
+      <ul class="dropdown-menu" role="button">
+        {% if user.status == 'on' %}
+        <li>
+          <a id="js-edit-btn" href="{{ path('admin_user_edit', {id:user.id}) }}">
+            编辑
+          </a>
+        </li>
+        <li>
+          <a class="js-certificate-btn" data-url="{{ path('admin_user_certificate',{id:user.id,type:'idcard'}) }}">
+            档案图片
+          </a>
+        </li>
+        <li>
+          <a class="change-status-show" data-url="{{ path('admin_user_exit_job', {id:user.userId}) }}">
+            离职
+          </a>
+        </li>
+        <li>
+          <a class="change-role-modal" data-url="{{ path('admin_user_role_change',{id:user.id}) }}">
+            更改权限
+          </a>
+        </li>
+        {% else %}
+        <li>
+          <a class="change-status-show" data-url="{{ path('admin_user_entry_job', {id:user.userId}) }}">
+            入职
+          </a>
+        </li>
+        {% endif %}
+      </ul>
+      {% endif %}
+    </div>
+  </td>
+</tr>

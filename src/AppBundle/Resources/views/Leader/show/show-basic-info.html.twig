@@ -1,0 +1,103 @@
+{% extends 'AppBundle::modal-base.html.twig' %}
+
+{% block title %}
+<div class="page-header">
+  <h4>员工详情</h4>
+</div>
+  <ul class="nav nav-tabs">
+    <li role="button" class="active"><a class="show-basic-info" data-url="{{path('user_basic_show',{id:basic.userId})}}">基础信息</a></li>
+    <li role="button"><a class="show-family-info"  data-url="{{path('leader_user_family_show',{id:basic.userId})}}">家庭信息</a></li>
+    <li role="button"><a class="show-learn-info"  data-url="{{path('leader_user_learn_show',{id:basic.userId})}}">学历信息</a></li>
+    <li role="button"><a class="show-work-info"  data-url="{{path('leader_user_work_show',{id:basic.userId})}}">工作信息</a></li>
+    <li role="button"><a class="show-other-info"  data-url="{{path('leader_user_other_show',{id:basic.userId})}}">其他信息</a></li>
+  </ul>
+{% endblock %}
+
+{% block body %}
+  <table class="table table-bordered">
+    <tr>
+      <td class="col-sm-3">姓名：</td>
+      <td>{{basic.trueName}}</td>
+    </tr>    
+    <tr>
+      <td>性别：</td>
+      <td>{% if basic.gender == 'male' %}男{% else %}女{% endif %}</td>
+    </tr>   
+    <tr>
+      <td>籍贯：</td>
+      <td>{{basic.native}}</td>
+    </tr>   
+    <tr>
+      <td>民族：</td>
+      <td>{{basic.nation}}</td>
+    </tr>   
+    <tr>
+      <td>身高：</td>
+      <td>{{basic.height}}</td>
+    </tr>   
+    <tr>
+      <td>体重：</td>
+      <td>{{basic.weight}}</td>
+    </tr>   
+    <tr>
+      <td>血型：</td>
+      <td>{{basic.blood}}</td>
+    </tr>   
+    <tr>
+      <td>文化程度：</td>
+      <td>{{ dict_text('education', basic.education) }}</td>
+    </tr>
+    <tr>
+      <td>专业：</td>
+      <td>{{basic.prefession}}</td>
+    </tr>
+    <tr>
+      <td>婚否：</td>
+      <td>{% if basic.marriage == 0 %}未婚{% else %}已婚{% endif %}</td>
+    </tr>
+    <tr>
+      <td>户口所在地：</td>
+      <td>{{basic.residence}}</td>
+    </tr>
+    <tr>
+      <td>家庭地址：</td>
+      <td>{{basic.address}}</td>
+    </tr>
+    <tr>
+      <td>邮编：</td>
+      <td>{{basic.postcode}}</td>
+    </tr>
+    <tr>
+      <td>身份证号码：</td>
+      <td>{{basic.Idcard}}</td>
+    </tr>
+    <tr>
+      <td>职称：</td>
+      <td>{{basic.professionTitle}}</td>
+    </tr>
+    <tr>
+      <td>户口性质：</td>
+      <td>{{basic.householdType}}</td>
+    </tr>
+    <tr>
+      <td>联系电话：</td>
+      <td>{{basic.phone}}</td>
+    </tr>
+    <tr>
+      <td>档案存放地：</td>
+      <td>{{basic.recordPlace}}</td>
+    </tr>
+    <tr>
+      <td>政治面貌：</td>
+      <td>{{ dict_text('politics', basic.politics) }}</td>
+    </tr>
+    <tr>
+      <td>预计到岗时间：</td>
+      <td>{{basic.joinTime|date('Y-m-d')}}</td>
+    </tr>
+    <tr>
+      <td>与原工作的劳动关系：</td>
+      <td>{{basic.formerLaborShip}}</td>
+    </tr>
+  </table>
+{% endblock %}

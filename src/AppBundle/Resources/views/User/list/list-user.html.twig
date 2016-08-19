@@ -1,0 +1,81 @@
+{% extends 'AppBundle::base.html.twig' %}
+
+{% set nav = 'user_list' %}
+
+{% block content_title %}
+{{ script(['links/user/js/list.js']) }}
+{{ script(['links/user/js/show-user.js']) }}
+  <div class="content-header">
+    {% if app.user.isAdmin() %}
+      <h1>员工管理</h1>
+    {% else %}
+      <h1>员工列表</h1>
+    {% endif %}
+  </div>
+  <hr>
+  {% if app.user.isAdmin() %}
+    <form id='search-form' class="form-inline" {% if status == 'on' %}action='{{ path('user_present_list') }}'{% else %}action='{{ path('admin_user_demission_list') }}'{% endif %}>
+  {% else %}
+    <form id='search-form' class="form-inline" action='{{ path('user_present_list') }}'>
+  {% endif %}
+    <div class="search-time">
+      <select name="searchTime" class="form-control">
+        {% if status == 'on' %}
+          <option value="joinTime" {% if app.request.query.get('searchTime') == 'joinTime' %} selected="selected"{% endif %}>入职时间</option>
+        {% else %}
+          <option value="quitTime" {% if app.request.query.get('searchTime') == 'quitTime' %} selected="selected"{% endif %}>离职时间</option>
+        {% endif %}
+      </select>
+      <div class='input-group date'>
+        <input type='text' class="form-control time" name="startTime" value="{{ app.request.query.get('startTime') }}">
+      </div> -
+      <div class='input-group date'>
+        <input type='text' class="form-control time" name="endTime" value="{{ app.request.query.get('endTime') }}">
+      </div>
+    </div><br>
+    <div class="form-group">
+      <select class="form-control search-select" name="pageNum">
+        {{ select_options(dict('pageNum'), app.request.query.get('pageNum'), '每页行数') }}
+      </select>
+    </div>
+    <select name="departmentId" class="form-control search-select">
+      {{ select_options(departmentsChoices, app.request.query.get('departmentId'), '所有部门') }}
+    </select>
+    <select name="gender" class="form-control search-select">
+      <option value="">性别</option>
+      <option {% if app.request.query.get('gender') == 'male' %} selected="selected"{% endif %} value="male">男</option>
+      <option {% if app.request.query.get('gender') == 'female' %} selected="selected"{% endif %} value="female">女</option>
+    </select>
+    <select name="education" class="form-control search-select">
+      {{ select_options(dict('education'), app.request.query.get('education'), '学历') }}
+    </select>
+    <select name="key" class="form-control search-select">
+      <option value="trueName" {% if app.request.query.get('key') == 'trueName' %} selected="selected"{% endif %}>姓名</option>
+      <option value="number" {% if app.request.query.get('key') == 'number' %} selected="selected"{% endif %}>工号</option>
+    </select>
+    <input class="form-control" id='keyword' name='keyword' placeholder="请输入关键词" value="{{ app.request.query.get('keyword') }}">
+    <input type='submit' class="btn btn-sm btn-default" value='GO'>
+  </form>
+  <ul class="nav nav-tabs mbm job-status">
+    {% if app.user.isAdmin() %}
+      <li {% if status == 'on' %} class="active" {% endif %}><a href="{{ path('admin_user_present_list') }}">在职</a></li>
+      <li {% if status == 'off' %} class="active" {% endif %} ><a href="{{ path('admin_user_demission_list') }}">离职</a></li>
+    
+      <div class="form-group pull-right">
+        <a class="btn btn-sm btn-success" id="js-export-btn" href="{{ path('admin_user_export', {status:status}) }}">
+          <span class="glyphicon glyphicon-export"></span>&nbsp;导出员工
+        </a>
+        <a class="btn btn-sm btn-success" id="js-import-btn" data-url="{{ path('admin_user_import') }}">
+          <span class="glyphicon glyphicon-import"></span>&nbsp;导入员工
+        </a>
+        <a class="btn btn-sm btn-success" href="{{ path('admin_user_add') }}">
+          <span class="glyphicon glyphicon-plus"></span>&nbsp;添加员工
+        </a>
+      </div>
+    {% endif %}
+  </ul>
+{% endblock %}
+{% block content_body %}
+  {% include 'AppBundle:User:list/list-table.html.twig' %}
+{% endblock %}
+

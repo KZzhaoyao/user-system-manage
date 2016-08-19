@@ -1,0 +1,67 @@
+<a href="{{ path('admin_user_present_list') }}" class="logo">
+  <span class="logo-mini"><b>U</b>MS</span>
+  <span class="logo-lg"><b>User</b>-Manage-System</span>
+</a>
+<nav class="navbar navbar-static-top">
+  <a class="sidebar-toggle" data-toggle="offcanvas" role="button"></a>
+
+  <div class="navbar-custom-menu">
+    <ul class="nav navbar-nav">
+      <li class="dropdown user user-menu">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        {% if app.user.getAvatar()|default() %}
+          <img src="{{ asset(app.user.getAvatar())}}" class="user-image" alt="User Image">
+        {% else %}
+          <img src="{{ asset('assets/avatar.png')}}" class="user-image" alt="User Image">  
+        {% endif %}
+          <span class="hidden-xs">
+            {% if app.user %}
+              {{ app.user.trueName }}
+            {% else %}
+              未登陆
+            {% endif %}
+          </span>
+        </a>
+        <ul class="dropdown-menu">
+          <li class="user-header">
+            {% if app.user.getAvatar()|default() %}
+              <img src="{{ asset(app.user.getAvatar())}}" class="img-circle" alt="User Image">
+            {% else %}
+              <img src="{{ asset('assets/avatar.png')}}" class="img-circle" alt="User Image">  
+            {% endif %}
+            <p>
+              {{ app.user.trueName|default() }}
+              <small>{{ app.user.department|default() }}</small>
+            </p>
+          </li>
+          <li class="user-body">
+            <div class="row head-link">
+              <div class="col-xs-4 text-center">
+                <a href="http://kuozhicollege.edusoho.cn/" target="_blank">阔知大学</a>
+              </div>
+              <div class="col-xs-4 text-center">
+                <a href="http://www.edusoho.com/" target="_blank">Edusoho</a>
+              </div>
+              <div class="col-xs-4 text-center">
+                <a href="http://www.qiqiuyu.com/" target="_blank">气球鱼</a>
+              </div>
+            </div>
+          </li>
+          <li class="user-footer">
+            <div class="pull-left">
+              <a href="{{ path('user_edit_person',{id:app.user.id}) }}" class="btn btn-default btn-flat">个人信息</a>
+            </div>
+            <div class="pull-right">
+              {% if app.user.isLogin()|default(false) %}
+                <a href="{{ path('logout') }}" class="btn btn-default btn-flat">退出</a>
+              {% else %}
+                <a href="{{ path('login') }}" class="btn btn-default btn-flat">登录</a>
+              {% endif %}
+              
+            </div>
+          </li>
+        </ul>
+      </li>
+    </ul> 
+  </div>
+</nav>

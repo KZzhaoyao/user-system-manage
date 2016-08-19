@@ -1,0 +1,27 @@
+{% extends 'AppBundle::modal-base.html.twig' %}
+
+{% block title %}
+  员工离职信息
+{% endblock %}
+
+{% block main %}
+  {% block body %}
+    <form id="injob-form" >
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="{% if status == 'on' %}quitTime{% else %}joinTime{% endif %}">{% if status == 'on' %}离职日期{% else %}入职日期{% endif %}:</label>
+        <div class="col-sm-8 controls">
+          <div class='input-group date time' id='{% if status == 'on' %}quitTime{% else %}joinTime{% endif %}'>
+          <input type='text' class="form-control" name="{% if status == 'on' %}quitTime{% else %}joinTime{% endif %}" />
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+          </span>
+        </div>
+      </div>
+      <button type="button" class="btn btn-sm btn-success change-status" data-url="{{ path(url, {id:id}) }}">保存</button>
+      </div>
+    </form>
+  {% endblock %}
+  {% block footer %}
+  {% endblock %}
+  <script type="text/javascript" src="{{ asset('links/user/js/datepicker.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'AppBundle::base.html.twig' %}
+
+{% set nav = 'department_personnel_list' %}
+
+{% block content_title %}
+{{ script(['links/user/js/list.js']) }}
+{{ script(['links/user/js/show-user.js']) }}
+  <div class="content-header">
+    <h1>部门管理</h1>
+  </div>
+  <hr>
+  <form id='search-form' class="form-inline" {% if status == 'on' %}action='{{ path('department_personnel_list') }}'{% else %}action='{{ path('department_demission_list') }}'{% endif %}>
+    <select name="pageNum" class="form-control search-select">
+      <option value="">每页行数</option>
+      <option {% if app.request.query.get('pageNum') == 20 %} selected="selected"{% endif %}>20</option>
+      <option {% if app.request.query.get('pageNum') == 50 %} selected="selected"{% endif %}>50</option>
+      <option {% if app.request.query.get('pageNum') == 100 %} selected="selected"{% endif %}>100</option>
+      <option {% if app.request.query.get('pageNum') == 200 %} selected="selected"{% endif %}>200</option>
+      <option {% if app.request.query.get('pageNum') == 500 %} selected="selected"{% endif %}>500</option>
+    </select>
+    <select name="gender" class="form-control search-select">
+      <option value="">性别</option>
+      <option {% if app.request.query.get('gender') == 'male' %} selected="selected"{% endif %} value="male">男</option>
+      <option {% if app.request.query.get('gender') == 'female' %} selected="selected"{% endif %} value="female">女</option>
+    </select>
+    <select name="education" class="form-control search-select">
+      {{ select_options(dict('education'), app.request.query.get('education'), '学历') }}
+    </select>
+    <select name="key" class="form-control search-select">
+      <option value="trueName" {% if app.request.query.get('key') == 'trueName' %} selected="selected"{% endif %}>姓名</option>
+      <option value="number" {% if app.request.query.get('key') == 'number' %} selected="selected"{% endif %}>工号</option>
+    </select>
+    <input class="form-control" id='keyword' name='keyword' placeholder="请输入关键词" value="{{ app.request.query.get('keyword') }}">
+    <input type='submit' class="btn btn-sm btn-default" value='搜索'>
+  </form>
+  <ul class="nav nav-tabs mbm job-status">
+    <li {% if status == 'on' %} class="active" {% endif %}><a href="{{ path('department_personnel_list') }}">在职</a></li>
+    <li {% if status == 'off' %} class="active" {% endif %} ><a href="{{ path('department_demission_list') }}">离职</a></li>
+  </ul>
+{% endblock %}
+{% block content_body %}
+  {% include 'AppBundle:Leader:list/list-table.html.twig' %}
+{% endblock %}
+

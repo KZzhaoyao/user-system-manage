@@ -1,0 +1,39 @@
+{{ script(['links/util/js/tableSort.js']) }}
+{{ script(['links/user/js/sort.js']) }}
+<table id="user-table" class="table table-striped table-hover" data-search-form="#user-search-form">
+  <thead>
+    <tr>
+      <th id="sort-number" role="button">工号&nbsp;<span class="glyphicon glyphicon-arrow-up change-glyphicon"></span></th>
+      <th>部门</th>
+      <th>姓名</th>
+      <th>生日</th>
+      <th>入职时间</th>
+      <th>性别</th>
+      <th>职称</th>
+      <th>职级</th>
+      <th>学历</th>
+      <th>联系方式</th>
+      {% if status == 'off' %}
+      <th>离职时间</th>
+      {% endif %}
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for user in users %}
+      {% include 'AppBundle:Leader:list/tr-table.html.twig' %}
+    {% else %}
+      <tr class="empty"><td colspan="20">暂无员工记录</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{{ web_macro.paginator(paginator) }}
+{% if paginator.lastPage > 1 %}
+  <select name="page-number" class="form-control search-select page-select">
+    <option value="">行数</option>
+    <option><a href="">20</a></option>
+    <option>50</option>
+    <option>100</option>
+    <option>200</option>
+  </select>
+{% endif %}

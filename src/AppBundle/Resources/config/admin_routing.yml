@@ -1,0 +1,79 @@
+admin_user_present_list:     
+    path: /admin/users/present     
+    defaults: { _controller: AppBundle:Admin:listPresent }
+
+admin_user_demission_list:
+    path: /admin/users/demission
+    defaults: { _controller: AppBundle:Admin:listDemission }
+
+admin_user_status_change:
+    path: /admin/user/{id}/change/{status}
+    defaults: { _controller: AppBundle:Admin:changeJobStatus }
+
+admin_user_entry_job:
+    path: /admin/user/{id}/entry
+    defaults: { _controller: AppBundle:Admin:entryJob }
+
+admin_user_exit_job:
+    path: /admin/user/{id}/exit
+    defaults: { _controller: AppBundle:Admin:exitJob}
+    
+admin_user_add:
+    path: /admin/user/add
+    defaults: { _controller: AppBundle:Admin:createUser }
+
+admin_user_edit:
+    path: /admin/user/{id}/edit
+    defaults: { _controller: AppBundle:Admin:editUser }
+
+admin_user_certificate:
+    path: /admin/user/{id}/certificate/{type}
+    defaults: { _controller: AppBundle:Admin:certificate }
+
+admin_user_family_info_add:
+    path: /admin/user/family/info/add
+    defaults: { _controller: AppBundle:Admin:addUserFamilyInfo }
+
+admin_user_learn_info_add:
+    path: /admin/user/learn/info/add
+    defaults: { _controller: AppBundle:Admin:addUserLearnInfo }
+
+admin_user_work_info_add:
+    path: /admin/user/work/info/add
+    defaults: { _controller: AppBundle:Admin:addUserWorkInfo }
+
+admin_list_department:
+    path: /admin/department/list
+    defaults: { _controller: AppBundle:Department:list }
+
+admin_add_department:
+    path: /admin/department/add
+    defaults: { _controller: AppBundle:Department:create }
+
+admin_delete_department:
+    path: /admin/department/{id}/delete
+    defaults: { _controller: AppBundle:Department:delete }    
+
+admin_edit_department:
+    path: /admin/department/{id}/edit
+    defaults: { _controller: AppBundle:Department:edit }    
+
+admin_user_number_check:
+    path: /admin/user/number/check
+    defaults: { _controller: AppBundle:Admin:checkNumberForCreate }
+
+admin_user_role_change:
+    path: /admin/user/{id}/role/change
+    defaults: { _controller: AppBundle:Admin:changeUserRole }
+
+admin_user_import:
+    path: /admin/user/import
+    defaults: { _controller: AppBundle:Admin:import }
+
+admin_user_export:
+    path: /admin/user/export/{status}
+    defaults: { _controller: AppBundle:Export:exportUserList }
+
+admin_file_download:
+    path: /admin/user/{id}/download/{fileName}
+    defaults: { _controller: AppBundle:Admin:download }

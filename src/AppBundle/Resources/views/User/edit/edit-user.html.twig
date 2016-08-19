@@ -1,0 +1,52 @@
+{% extends 'AppBundle::base.html.twig' %}
+{% set nav = extraInfo.nav %}
+
+{% block content_title %} <h4>编辑信息</h4>{% endblock %}
+{% block content_body %}
+
+{{ script(['links/user/js/edit-user.js']) }}
+<form id="edit-user-form" class="form-horizontal" method="post" action="{% if app.user.isAdmin() %}{{ path('admin_user_edit',{id:user.id}) }}{% else %}{{ path('user_edit_person',{id:user.id}) }}{% endif %}">
+  <div class="edit-user-body">
+    <legend class="text-primary">基本信息</legend>
+    {% include 'AppBundle:User:edit/user-basic-info.html.twig' %}
+
+    <legend class="text-primary">
+      家庭状况
+    </legend>
+    <div class="family">
+      {% include 'AppBundle:User:add/user-family-info.html.twig' %}
+      {% include 'AppBundle:User:edit/user-family-info.html.twig' %}
+    </div>
+
+    <legend class="text-primary">
+      学习经历
+    </legend>
+    <div class="learn">
+      {% include 'AppBundle:User:add/user-learn-info.html.twig' %}
+      {% include 'AppBundle:User:edit/user-learn-info.html.twig' %}
+    </div>
+
+    <legend class="text-primary">
+      工作履历
+    </legend>
+    <div class="work">
+      {% include 'AppBundle:User:add/user-work-info.html.twig' %}
+      {% include 'AppBundle:User:edit/user-work-info.html.twig' %}
+    </div>
+
+    <legend class="text-primary">其他信息</legend>
+    {% include 'AppBundle:User:edit/user-other-info.html.twig' %}
+  </div>
+  <div class="footer btn-footer">
+    {% if app.user.isAdmin() %}
+      <a href="{{ path('admin_user_present_list') }}" class="btn btn-default">取消</a>
+    {% else %}
+      <a href="{{ path('user_present_list') }}" class="btn btn-default">取消</a>
+    {% endif %}
+    {{ form_csrf_token() }}
+    <button class="btn btn-primary" type="submit">保存</button>
+  </div>
+</form>
+{% endblock %}
+
+

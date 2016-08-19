@@ -1,0 +1,32 @@
+pageNum:
+    20: 20
+    50: 50
+    100: 100
+    200: 200
+    500: 500
+
+education:
+    juniorMiddle: 初中
+    seniorMiddle: 高中
+    JuniorCollege: 大专
+    regularCollege: 本科
+    master: 硕士
+    doctor: 博士
+
+politics:
+    masses: 群众
+    leagueMember: 共青团员
+    reservePartyMember: 预备党员
+    partyMember: 共产党员
+    other: 其他
+
+blood:
+    '': 选择血型
+    A: A
+    B: B
+    AB: AB
+    O: O
+
+marriage:
+    0: 未婚
+    1: 已婚

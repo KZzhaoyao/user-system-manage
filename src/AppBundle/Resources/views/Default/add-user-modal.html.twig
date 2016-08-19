@@ -1,0 +1,25 @@
+{% extends 'modal-base.html.twig' %}
+
+{% block title %}编辑用户联系信息{% endblock %}
+{% block main %}
+
+<form id="add-user-form" class="form-horizontal" action="#" method="post">
+
+  <div class="modal-body">
+    <legend class="text-primary">基本信息</legend>
+    {% include 'user/base-fields.html.twig' %}  
+
+    <legend class="text-primary">学历信息</legend>
+    {% include 'user/license-fields.html.twig' %}
+    <legend class="text-primary">人事信息</legend>
+    {% include 'user/contact-fields.html.twig' %}
+
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-link" data-dismiss="modal">取消</button>
+    <button class="btn btn-primary" type="submit">保存</button>
+  </div>
+
+</form>
+
+{% endblock %}

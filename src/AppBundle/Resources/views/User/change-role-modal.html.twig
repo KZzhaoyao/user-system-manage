@@ -1,0 +1,28 @@
+{% extends 'AppBundle::modal-base.html.twig' %}
+
+{% block title %}设置用户组{% endblock %}
+
+{% block body %}
+  <form method='post'  class="form-group " >
+    <div class="checkboxs">
+      <label>
+        <input type="checkbox" name="roles[]" value="ROLE_USER" {% if 'ROLE_USER' in user.roles %}checked="checked"{% endif %}>普通员工
+      </label>
+      <label>
+        <input type="checkbox" name="roles[]" value="ROLE_LEADER" {% if 'ROLE_LEADER' in user.roles %}checked="checked"{% endif %}>部门领导
+      </label>
+      <label>
+        <input type="checkbox" name="roles[]" value="ROLE_ADMIN" {% if 'ROLE_ADMIN' in user.roles %}checked="checked"{% endif %}>管理员
+      </label>
+    </div>
+{% endblock %}
+
+{% block footer %}
+  <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+  <button type="button" class="btn btn-default change-role" data-url="{{path('admin_user_role_change',{id:user.id})}}">确认
+  </button>
+    </form>
+
+  <script type="text/javascript" src="{{ asset('links/user/js/change-role.js') }}"></script>
+{% endblock %}
+

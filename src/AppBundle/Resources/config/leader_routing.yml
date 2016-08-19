@@ -1,0 +1,11 @@
+department_personnel_list:
+    path: /leader/department/personnel/list
+    defaults: { _controller: AppBundle:Leader:listPresent }
+
+department_demission_list:
+    path: /leader/department/demission/list
+    defaults: { _controller: AppBundle:Leader:listDemission }
+
+department_user_show:
+    path: /leader/department/user/{id}/show
+    defaults: { _controller: AppBundle:Leader:show }

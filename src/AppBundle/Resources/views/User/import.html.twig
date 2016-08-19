@@ -1,0 +1,23 @@
+{% extends 'AppBundle::modal-base.html.twig' %}
+
+{% block title %}导入员工{% endblock %}
+{% block body %}
+<form method="post" enctype="multipart/form-data" class="import form-horizontal" action="{{ path('admin_user_import')}}">
+  <div class="form-group" id="teachers-form-group">
+    <label class="col-md-3 col-md-offset-1">
+      选择要导入的文件
+    </label>
+    <div class="col-md-8 controls">
+      <div class="uploader blue">
+        <input  type="file" name="file_stu" id="import"/>
+      </div>
+      <a href="{{ asset('import.xls') }}">点击下载示例说明文件</a>
+      <br>
+      {{ form_csrf_token() }}
+      <button class="btn btn-primary col-md-offset-6" type="submit">导入</button>
+      <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+    </div>
+  </div>
+</form>
+{% endblock %}
+{% block footer %}{% endblock %}

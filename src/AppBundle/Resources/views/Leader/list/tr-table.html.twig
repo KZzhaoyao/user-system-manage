@@ -1,0 +1,23 @@
+{{ script(['links/user/js/change-role.js']) }}
+<tr id="js-status-{{ user.id }}">
+  <td>{{ user.number }}</td>
+  <td>{{ user.name }}</td>
+  <td>{{ user.trueName }}</td>
+  <td>{{ user.bornTime|date('Y-m-d') }}</td>
+  <td>{{ user.joinTime|date('Y-m-d') }}</td>
+  <td>
+    {% if user.gender == 'male' %}男{% else %}女{% endif %}
+  </td>
+  <td>{{ user.professionTitle }}</td>
+  <td>{{ user.rank }}</td>
+  <td>{{ dict_text('education', user.education) }}</td>
+  <td>{{ user.phone }}</td>
+  {% if user.status == 'off' %}
+    <td>{{ user.quitTime|date('Y-m-d') }}</td>
+  {% endif %}
+  <td style="min-width:100px;">
+    <div class="btn-group">
+      <a class="btn btn-default btn-sm show-inuser" data-url="{{ path('department_user_show',{id:user.id}) }}">查看</a>
+    </div>
+  </td>
+</tr>

@@ -1,0 +1,41 @@
+<div>
+{% for work in workInfos %}
+  <div>
+    <div class="form-group">
+      <div>
+        <input type="hidden" name="work[{{ work.id }}][id]" value="{{ work.id }}">
+      </div>
+      <label class="col-sm-2 control-label" for="startTime">开始时间:</label>
+      <div class="col-sm-2 controls">
+        <input class="form-control time" type="text" name="work[{{ work.id }}][startTime]" placeholder="日期格式：年-月-日" value="{{ work.startTime|date('Y/m/d') }}">
+      </div>
+      <label class="col-sm-2 control-label" for="endTime">结束时间:</label>
+      <div class="col-sm-3 controls">
+        <input class="form-control time" type="text" name="work[{{ work.id }}][endTime]" placeholder="日期格式：年-月-日" value="{{ work.endTime|date('Y/m/d') }}">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="company">工作单位:</label>
+      <div class="col-sm-2 controls">
+        <input class="form-control" type="text" name="work[{{ work.id }}][company]" value="{{ work.company }}">
+      </div>
+      <label class="col-sm-2 control-label" for="position">岗位职务:</label>
+      <div class="col-sm-3 controls">
+        <input class="form-control" type="text" name="work[{{ work.id }}][position]" value="{{ work.position }}">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="leaveReason">离职原因:</label>
+      <div class="col-sm-2 controls">
+        <input class="form-control" type="text" name="work[{{ work.id }}][leaveReason]" value="{{ work.leaveReason }}">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-2 col-sm-offset-8">
+        <button type="button" id="delete-work-info" class="btn btn-sm btn-danger delete-work-info delete-work-btn">删除</button>
+        <button type="button" class="btn btn-sm btn-success add-work-info">新增</button>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>

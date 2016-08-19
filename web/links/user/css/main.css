@@ -1,0 +1,145 @@
+.dropdown-menu>li>.change-status-show:hover{
+  color: red;
+}
+
+h4 {
+    padding-top: 10px;
+    display: inline-block;
+}
+
+hr {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+}
+
+.add-user-body .text-primary{
+    font-size: 16px;
+}
+
+.edit-user-body .text-primary {
+    font-size: 16px;
+}
+
+.empty {
+    text-align: center;
+}
+
+.bot {
+    margin-bottom: 11px;
+}
+
+.add-user-body legend{
+    font-size: 16px;
+}
+
+.change-glyphicon {
+    -webkit-transition: -webkit-transform 0.3s;
+}
+
+#search-form {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+#keyword {
+    width: 200px;
+}
+
+.error{
+    font-weight: normal;
+    color:red;
+    font-size: 16px;
+}
+
+.edit-family-info {
+    margin-right: 200px;
+}
+
+.page-select {
+    width:60px;
+    display: inline-block;
+}
+
+.modal .form-group .input{
+    margin-left:200px;
+    font-size: 18px;
+    font-family: Georgia, serif;
+}
+
+.person-info {
+    margin-top: 50px;
+}
+
+.person-info li {
+    font-size: 20px;
+    list-style-type: none;
+    margin-left: 100px;
+    line-height: 50px;
+}
+
+.person-picture {
+    height: 150px;
+    width: 150px;
+    border: 1px solid #ccc;
+    position: absolute;
+    left:700px;
+    top: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+
+.cool-add-box {
+    padding-top: 15px;
+    border: 1px solid #BBB7BD;
+}
+
+.tab-content .row {
+    margin-bottom: 6px;
+}
+
+.tab-content .row input {
+    border-radius: 4px;
+}
+
+.radios,
+.checkboxs {
+  padding-top: 5px;
+  vertical-align: middle;
+}
+.radios label,
+.checkboxs label {
+  font-weight: normal;
+  padding: 0 20px 0 0px;
+}
+
+.user-panel .pull-left .user-image {
+    max-width: 55px;
+}
+
+.table td {   
+word-break:break-all;
+word-wrap:break-word;
+}
+
+.import .uploader {
+    height: 50px;
+}
+
+.head-link div:hover{
+    background-color: #A8A8A8;
+}
+
+
+.search-time {
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.certificate-img {
+    max-width: 540px;
+
+}

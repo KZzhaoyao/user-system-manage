@@ -1,0 +1,25 @@
+{% for workInfo in workInfos%}
+  <table class="table table-bordered">
+    <tr>
+      <td class="col-sm-3">开始时间：</td>
+      <td>{{workInfo.startTime|date('Y-m-d')}}</td>
+    </tr>
+    <tr>
+      <td>结束时间：</td>
+      <td>{{workInfo.endTime|date('Y-m-d')}}</td>
+    </tr>
+    <tr>
+      <td>工作单位：</td>
+      <td>{{workInfo.company}}</td>
+    </tr>
+    <tr>
+      <td>岗位职务：</td>
+      <td>{{workInfo.position}}</td>
+    </tr>
+    <tr>
+      <td>离职原因：</td>
+      <td>{{workInfo.leaveReason}}</td>
+    </tr>
+  </table>
+  <hr>
+{% endfor %}

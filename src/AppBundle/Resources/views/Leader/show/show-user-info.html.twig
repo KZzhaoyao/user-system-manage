@@ -1,0 +1,32 @@
+{% extends 'AppBundle::modal-base.html.twig' %}
+
+{% block title %}员工详情{% endblock %}
+{% block body %}
+  <ul class="nav nav-tabs" role="tablist" style="margin-bottom:20px;">
+  <li {% if tab == 'basic' %}class="active"{% endif %}><a href="#basic-info-panel" data-toggle="tab">基本信息</a></li>
+  <li {% if tab == 'family' %}class="active"{% endif %}><a href="#family-info-panel" data-toggle="tab">家庭信息</a></li>
+  <li {% if tab == 'learn' %}class="active"{% endif %}><a href="#learn-info-panel" data-toggle="tab">学历信息</a></li>
+  <li {% if tab == 'work' %}class="active"{% endif %}><a href="#work-info-panel" data-toggle="tab">工作信息</a></li>
+  <li {% if tab == 'other' %}class="active"{% endif %}><a href="#other-info-panel" data-toggle="tab">其他信息</a></li>
+</ul>
+<div class="tab-content">
+  <div class="tab-pane {% if tab == 'basic' %}active{% endif %}" id="basic-info-panel">
+    {% include 'AppBundle:User:show/show-basic-info.html.twig' %}
+  </div>
+    <div class="tab-pane {% if tab == 'family' %}active{% endif %}" id="family-info-panel">
+    {% include 'AppBundle:User:show/show-family-info.html.twig' %}
+  </div>
+
+  <div class="tab-pane {% if tab == 'learn' %}active{% endif %}" id="learn-info-panel">
+    {% include 'AppBundle:User:show/show-learn-info.html.twig' %}
+  </div>
+
+  <div class="tab-pane {% if tab == 'work' %}active{% endif %}" id="work-info-panel">
+    {% include 'AppBundle:User:show/show-work-info.html.twig' %}
+  </div>
+
+  <div class="tab-pane {% if tab == 'other' %}active{% endif %}" id="other-info-panel">
+    {% include 'AppBundle:User:show/show-other-info.html.twig' %}
+  </div>
+</div>
+{% endblock %}

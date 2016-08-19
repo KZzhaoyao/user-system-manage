@@ -1,0 +1,16 @@
+{% extends 'AppBundle::base.html.twig' %}
+
+
+{% block content_title %}
+  <h2>员工管理</h2>
+{% endblock %}
+{% block content_body %}
+  这里是展示列表
+ 	{% if status == 0 %} 
+ 		<a href="{{ path('admin_user_change', { 'status': 1 }) }}">恢复在职</a>
+ 	{% elseif status == 1 %}
+ 		<a href="{{ path('admin_user_change', { 'status': 0 }) }}">改为离职</a>
+ 	{% endif %}
+{% endblock %}
+   
+

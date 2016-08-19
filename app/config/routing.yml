@@ -1,0 +1,15 @@
+system:
+    resource: "@AppBundle/Resources/config/system_routing.yml"
+    prefix:   /
+
+admin:
+    resource: "@AppBundle/Resources/config/admin_routing.yml"
+    prefix:   /
+
+user:
+    resource: "@AppBundle/Resources/config/user_routing.yml"
+    prefix:   /
+
+leader:
+    resource: "@AppBundle/Resources/config/leader_routing.yml"
+    prefix:   /

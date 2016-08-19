@@ -1,0 +1,15 @@
+<div>
+  <input type="hidden" name="other[id]" value="{{ otherInfo.id|default('') }}">
+</div>
+<div class="form-group">
+  <label class="col-sm-2 control-label" for="reward">所受培训及所具有证书:</label>
+  <div class="col-sm-7 controls">
+    <textarea class="form-control" rows="3" name="other[reward]">{{ otherInfo.reward|default('') }}</textarea>
+  </div>
+</div>
+<div class="form-group">
+  <label class="col-sm-2 control-label" for="selfAssessment">自我评价:</label>
+  <div class="col-sm-7 controls">
+    <textarea class="form-control" rows="3" name="other[selfAssessment]">{{ otherInfo.selfAssessment|default('') }}</textarea>
+  </div>
+</div>

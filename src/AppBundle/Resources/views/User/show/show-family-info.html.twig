@@ -1,0 +1,25 @@
+{% for familyMember in familyMembers%}
+  <table class="table table-bordered">
+    <tr>
+      <td class="col-sm-3">称谓：</td>
+      <td>{{familyMember.member}}</td>
+    </tr>
+    <tr>
+      <td>姓名：</td>
+      <td>{{familyMember.trueName}}</td>
+    </tr>
+    <tr>
+      <td>年龄：</td>
+      <td>{{familyMember.age}}</td>
+    </tr>
+    <tr>
+      <td>联系电话：</td>
+      <td>{{familyMember.phone}}</td>
+    </tr>
+    <tr>
+      <td>工作单位及职务：</td>
+      <td>{{familyMember.job}}</td>
+    </tr>
+  </table>
+  <hr>
+{% endfor %}
